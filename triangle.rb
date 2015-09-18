@@ -15,6 +15,24 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  if a==0 || b==0 || c==0
+    raise TriangleError, "sides can't be 0"
+  end
+  if (a < 0) || (b < 0) || (c < 0)
+    raise TriangleError, "no sides can be negative"
+  end
+  if (a + b <= c) || (a + c <= b) || (b + c <= a)
+    raise TriangleError, "Two sides must always add up to or to more than the third side"
+  end
+  if a==b && a==c
+    return :equilateral
+  end
+  if (a==b && a!=c) || (a==c && a!=b) || (b==c && b!=a)
+    return :isosceles
+  end
+  if a!=b && a!=c && b!=c
+    return :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
